@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#A StorJ node monitor script: Initial version by turbostorjdsk / KernelPanick, adapted by BrightSilence
+#A StorJ node monitor script: Initial version by turbostorjdsk / KernelPanick, adapted by BrightSilence, original grep statements by Alexey
 
 #Log line can be edited using cat for SNO's who wrote their log to a file.
 LOG="docker logs storagenode"
@@ -95,7 +95,7 @@ echo -e "\e[96m========== REPAIR UPLOAD ===== \e[0m"
 #count of successful uploads of repaired pieces
 put_repair_success=$($LOG 2>&1 | grep PUT_REPAIR | grep uploaded -c)
 echo -e "\e[92mSuccessful:           $put_repair_success \e[0m"
-#count of failed uploads repaired pieces 
+#count of failed uploads repaired pieces
 put_repair_failed=$($LOG 2>&1 | grep PUT_REPAIR | grep failed -c)
 echo -e "\e[33mFailed:               $put_repair_failed \e[0m"
 #Ratio of PUT_REPAIR
