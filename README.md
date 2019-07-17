@@ -2,6 +2,10 @@
 
 This script calculates success rates for audits, downloads, uploads and repair traffic.
 
+_Note: If your container name is different from the default 'storagenode' you can pass it as an argument to the script. Example:_ `./successrate.sh storjv3`
+
+_Note 2: If you have redirected the docker logs to a file you can change the LOG parameter to a cat command. Example can be found in the script._
+
 Example output:
 ```
 ========== AUDIT =============
