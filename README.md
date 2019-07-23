@@ -6,6 +6,9 @@ _Note: If your container name is different from the default 'storagenode' you ca
 
 _Note 2: If you have redirected the docker logs to a file you can change the LOG parameter to a cat command. Example can be found in the script._
 
+## Locale error fix
+If you see errors like `./successrate.sh: line 68: printf: 99.8048: invalid number` try running the script with `LC_ALL=C ./successrate.sh`
+
 Example output:
 ```
 ========== AUDIT =============
