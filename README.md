@@ -25,7 +25,7 @@ Passing a log file: `./successrate.sh /data/storagenode.log`
 Unfortunately, running it through a docker container you can only run it with option (b), passing a log file.
 
 ```
-docker run --rm -v "<<path to successrate.sh folder>>:/tools" -v "<<path to the log file folder>>:/data" bash /tools/successrate.sh /data/storagenode.log
+docker run --rm --mount "type=bind,source=<<path to successrate.sh folder>>,target=/tools,readonly" --mount "type=bind,source=<<path to the log file folder>>,target=/data,readonly" bash /tools/successrate.sh /data/storagenode.log
 ```
 
 Remember to update the "<< path...>>" place holders of the above instruction to your correct local path directories.

@@ -3,7 +3,7 @@
 
 LOG_SOURCE="${1}"
 
-if [ ! -z "${LOG_SOURCE}" ] && [ -e "${LOG_SOURCE}" ]
+if [ -e "${LOG_SOURCE}" ]
 then
 	# the first argument is passed and it's an existing log file
 	LOG="cat ${LOG_SOURCE}"
