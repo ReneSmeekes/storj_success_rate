@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 #A StorJ node monitor script: Initial version by turbostorjdsk / KernelPanick, adapted by BrightSilence, original grep statements by Alexey
 
-# assumes your docker container is named 'storagenode'. If not, pass it as the first argument, e.g.:
-# bash successrate.sh mynodename
-DOCKER_NODE_NAME="${1:-storagenode}"
-LOG="docker logs $DOCKER_NODE_NAME"
-#Log line can be edited using cat for SNO's who wrote their log to a file.
-#LOG="cat /volume1/storj/v3/data/node.log"
+LOG_SOURCE="${1}"
+
+if [ ! -z "${LOG_SOURCE}" ] && [ -e "${LOG_SOURCE}" ]
+then
+	# the first argument is passed and it's an existing log file
+	LOG="cat ${LOG_SOURCE}"
+else
+	# assumes your docker container is named 'storagenode'. If not, pass it as the first argument, e.g.:
+	# bash successrate.sh mynodename
+	DOCKER_NODE_NAME="${1:-storagenode}"
+	LOG="docker logs $DOCKER_NODE_NAME"
+fi
 
 #Node Success Rates
 
