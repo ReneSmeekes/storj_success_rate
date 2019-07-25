@@ -2,12 +2,37 @@
 
 This script calculates success rates for audits, downloads, uploads and repair traffic.
 
-_Note: If your container name is different from the default 'storagenode' you can pass it as an argument to the script. Example:_ `./successrate.sh storjv3`
+## How to use it
 
-_Note 2: If you have redirected the docker logs to a file you can change the LOG parameter to a cat command. Example can be found in the script._
+If your operative system can run _bash shell scripts_ then you can run directly the script, otherwise you can run it with the official [_bash_ docker image](https://hub.docker.com/_/bash).
+
+The script accept one optinal argument which is:
+
+a. The name of the docker storage node docker container.
+b. The path to a storage node log file.
+
+When the argument isn't provided, then it defauls to option (a) using _storagenode_ as a container name.
+
+### Examples running it directly
+
+Passing a docker container name: `./successrate.sh storjv3`
+
+Passing a log file: `./successrate.sh /data/storagenode.log`
+
+
+### Examples running it through docker
+
+Unfortunately, running it through a docker container you can only run it with option (b), passing a log file.
+
+```
+docker run --rm -v "<<path to successrate.sh folder>>:/tools" -v "<<path to the log file folder>>:/data" bash /tools/successrate.sh /data/storagenode.log
+```
+
+Remember to update the "<< path...>>" place holders of the above instruction to your correct local path directories.
+
 
 ## Locale error fix
-If you see errors like `./successrate.sh: line 68: printf: 99.8048: invalid number` try running the script with 
+If you see errors like `./successrate.sh: line 68: printf: 99.8048: invalid number` try running the script with
 ```
 LC_ALL=C ./successrate.sh
 ```
