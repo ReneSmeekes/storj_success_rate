@@ -4,12 +4,12 @@ This script calculates success rates for audits, downloads, uploads and repair t
 
 ## How to use it
 
-If your operative system can run _bash shell scripts_ then you can run directly the script, otherwise you can run it with the official [_bash_ docker image](https://hub.docker.com/_/bash).
+If your operating system can run _bash shell scripts_ you can run the script directly. Otherwise you can run it with the official [_bash_ docker image](https://hub.docker.com/_/bash).
 
-The script accept one optinal argument which is:
+The script accepts one optional argument, which is:
 
-a. The name of the docker storage node docker container.
-b. The path to a storage node log file.
+- a) The name of the docker storage node docker container.
+- b) The path to a storage node log file.
 
 When the argument isn't provided, then it defauls to option (a) using _storagenode_ as a container name.
 
@@ -28,7 +28,7 @@ Unfortunately, running it through a docker container you can only run it with op
 docker run --rm --mount "type=bind,source=<<path to successrate.sh folder>>,target=/tools,readonly" --mount "type=bind,source=<<path to the log file folder>>,target=/data,readonly" bash /tools/successrate.sh /data/storagenode.log
 ```
 
-Remember to update the "<< path...>>" place holders of the above instruction to your correct local path directories.
+Remember to update the "<< path...>>" place holders in the above instruction to your correct local paths.
 
 
 ## Locale error fix
