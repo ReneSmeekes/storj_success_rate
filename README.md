@@ -1,6 +1,7 @@
 # Success Rate Tool
 
-This script calculates success rates for audits, downloads, uploads and repair traffic.
+This script calculates success rates for audits, downloads, uploads and repair traffic on Linux systems.
+Alexey built a similar [script for windows](https://github.com/AlexeyALeonov/success_rate) users.
 
 ## How to use it
 
