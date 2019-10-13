@@ -21,10 +21,10 @@ echo -e "\e[96m========== AUDIT ============= \e[0m"
 audit_success=$($LOG 2>&1 | grep GET_AUDIT | grep downloaded -c)
 echo -e "\e[92mSuccessful:           $audit_success \e[0m"
 #count of recoverable failed audits
-audit_failed_warn=$($LOG 2>&1 | grep GET_AUDIT | grep failed | grep -v open -c)
+audit_failed_warn=$($LOG 2>&1 | grep GET_AUDIT | grep failed | grep -v NotFound -c)
 echo -e "\e[33mRecoverable failed:   $audit_failed_warn \e[0m"
 #count of unrecoverable failed audits
-audit_failed_crit=$($LOG 2>&1 | grep GET_AUDIT | grep failed | grep open -c)
+audit_failed_crit=$($LOG 2>&1 | grep GET_AUDIT | grep failed | grep NotFound -c)
 echo -e "\e[91mUnrecoverable failed: $audit_failed_crit \e[0m"
 #Ratio of Successful to Failed Audits
 if [ $(($audit_success+$audit_failed_crit+$audit_failed_warn)) -ge 1 ]
