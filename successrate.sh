@@ -180,7 +180,7 @@ then
 else
 	put_repair_failratio=0.000%
 fi
-#Ratio of Success PUT_REPAIR
+#Ratio of Cancel PUT_REPAIR
 if [ $(($put_repair_success+$put_repair_failed+$put_repair_canceled)) -ge 1 ]
 then
 	put_repair_canratio=$(printf '%.3f\n' $(echo -e "$put_repair_canceled $put_repair_success $put_repair_failed" | awk '{print ( $1 / ( $1 + $2 + $3 )) * 100 }'))%
@@ -200,3 +200,27 @@ echo -e "\e[33mCanceled:              $put_repair_canceled \e[0m"
 echo -e "Cancel Rate:           $put_repair_canratio"
 echo -e "\e[92mSuccessful:            $put_repair_success \e[0m"
 echo -e "Success Rate:          $put_repair_ratio"
+
+echo -e "\e[96m========== DELETE ============= \e[0m"
+#count of successful deletes
+delete_success=$($LOG 2>&1 | grep deleted -c)
+#count of failed deletes
+delete_failed=$($LOG 2>&1 | grep PUT_REPAIR | grep 'delete failed' -c)
+#Ratio of Fail delete
+if [ $(($delete_success+$delete_failed)) -ge 1 ]
+then
+	delete_failratio=$(printf '%.3f\n' $(echo -e "$delete_failed $delete_success" | awk '{print ( $1 / ( $1 + $2 )) * 100 }'))%
+else
+	delete_failratio=0.000%
+fi
+#Ratio of Success delete
+if [ $(($delete_success+$delete_failed)) -ge 1 ]
+then
+	delete_ratio=$(printf '%.3f\n' $(echo -e "$delete_success $delete_failed" | awk '{print ( $1 / ( $1 + $2 )) * 100 }'))%
+else
+	delete_ratio=0.000%
+fi
+echo -e "\e[33mFailed:                $delete_failed \e[0m"
+echo -e "Fail Rate:             $delete_failratio"
+echo -e "\e[92mSuccessful:            $delete_success \e[0m"
+echo -e "Success Rate:          $delete_ratio"
