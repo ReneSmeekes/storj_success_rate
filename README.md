@@ -79,4 +79,9 @@ Canceled:              0
 Cancel Rate:           0.000%
 Successful:            2
 Success Rate:          100.000%
+========== DELETE =============
+Failed:                0
+Fail Rate:             0.000%
+Successful:            145
+Success Rate:          100.000%
 ```
