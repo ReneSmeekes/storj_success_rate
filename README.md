@@ -41,28 +41,42 @@ LC_ALL=C ./successrate.sh
 
 Example output:
 ```
-========== AUDIT =============
-Successful:           27035
-Recoverable failed:   398
-Unrecoverable failed: 0
-Success Rate Min:     98.549%
-Success Rate Max:     100.000%
-========== DOWNLOAD ==========
-Successful:           757353
-Failed:               5079
-Success Rate:         99.334%
-========== UPLOAD ============
-Successful:           1366111
-Rejected:             1936
-Failed:               154270
-Acceptance Rate:      99.858%
-Success Rate:         89.853%
-========== REPAIR DOWNLOAD ===
-Successful:           4124
-Failed:               11337
-Success Rate:         26.674%
-========== REPAIR UPLOAD =====
-Successful:           24366
-Failed:               5884
-Success Rate:         80.549%
+========== AUDIT ==============
+Critically failed:     0
+Critical Fail Rate:    0.000%
+Recoverable failed:    0
+Recoverable Fail Rate: 0.000%
+Successful:            14
+Success Rate:          100.000%
+========== DOWNLOAD ===========
+Failed:                0
+Fail Rate:             0.000%
+Canceled:              3
+Cancel Rate:           1.000%
+Successful:            297
+Success Rate:          99.000%
+========== UPLOAD =============
+Rejected:              0
+Acceptance Rate:       100.000%
+---------- accepted -----------
+Failed:                0
+Fail Rate:             0.000%
+Canceled:              553
+Cancel Rate:           28.417%
+Successful:            1393
+Success Rate:          71.583%
+========== REPAIR DOWNLOAD ====
+Failed:                0
+Fail Rate:             0.000%
+Canceled:              0
+Cancel Rate:           0.000%
+Successful:            0
+Success Rate:          0.000%
+========== REPAIR UPLOAD ======
+Failed:                0
+Fail Rate:             0.000%
+Canceled:              0
+Cancel Rate:           0.000%
+Successful:            2
+Success Rate:          100.000%
 ```
