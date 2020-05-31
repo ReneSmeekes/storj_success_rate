@@ -13,6 +13,9 @@ else
 	DOCKER_NODE_NAME="${1:-storagenode}"
 	LOG="docker logs $DOCKER_NODE_NAME"
 fi
+errors=$($LOG 2>&1 | grep error)
+errors_print=$(printf '%s\n' $(echo -e "$errors" | awk '{print $1}'))
+echo -e "$errors_print"
 
 #Node Success Rates
 
