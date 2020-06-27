@@ -205,7 +205,7 @@ echo -e "\e[96m========== DELETE ============= \e[0m"
 #count of successful deletes
 delete_success=$($LOG 2>&1 | grep deleted -c)
 #count of failed deletes
-delete_failed=$($LOG 2>&1 | grep PUT_REPAIR | grep 'delete failed' -c)
+delete_failed=$($LOG 2>&1 | grep 'delete failed' -c)
 #Ratio of Fail delete
 if [ $(($delete_success+$delete_failed)) -ge 1 ]
 then
