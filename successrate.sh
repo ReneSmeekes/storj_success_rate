@@ -13,6 +13,9 @@ else
 	DOCKER_NODE_NAME="${1:-storagenode}"
 	LOG="docker logs $DOCKER_NODE_NAME"
 fi
+errors=$($LOG 2>&1 | grep error)
+errors_print=$(printf '%s\n' $(echo -e "$errors" | awk '{print $1}'))
+echo -e "$errors_print"
 
 #Node Success Rates
 
@@ -49,7 +52,7 @@ echo -e "Recoverable Fail Rate: $audit_recfailrate"
 echo -e "\e[92mSuccessful:            $audit_success \e[0m"
 echo -e "Success Rate:          $audit_successrate"
 
-echo -e "\e[96m========== DOWNLOAD =========== \e[0m"
+echo -e "\e[96m========== EGRESS =========== \e[0m"
 #count of successful downloads
 dl_success=$($LOG 2>&1 | grep '"GET"' | grep downloaded -c)
 #canceled Downloads from your node
@@ -84,7 +87,7 @@ echo -e "Cancel Rate:           $dl_canratio"
 echo -e "\e[92mSuccessful:            $dl_success \e[0m"
 echo -e "Success Rate:          $dl_ratio"
 
-echo -e "\e[96m========== UPLOAD ============= \e[0m"
+echo -e "\e[96m========== INGRESS ============= \e[0m"
 #count of successful uploads to your node
 put_success=$($LOG 2>&1 | grep '"PUT"' | grep uploaded -c)
 #count of rejected uploads to your node
@@ -131,7 +134,7 @@ echo -e "Cancel Rate:           $put_cancel_ratio"
 echo -e "\e[92mSuccessful:            $put_success \e[0m"
 echo -e "Success Rate:          $put_ratio"
 
-echo -e "\e[96m========== REPAIR DOWNLOAD ==== \e[0m"
+echo -e "\e[96m========== REPAIR EGRESS ==== \e[0m"
 #count of successful downloads of pieces for repair process
 get_repair_success=$($LOG 2>&1 | grep GET_REPAIR | grep downloaded -c)
 #count of failed downloads of pieces for repair process
@@ -166,7 +169,7 @@ echo -e "Cancel Rate:           $get_repair_canratio"
 echo -e "\e[92mSuccessful:            $get_repair_success \e[0m"
 echo -e "Success Rate:          $get_repair_ratio"
 
-echo -e "\e[96m========== REPAIR UPLOAD ====== \e[0m"
+echo -e "\e[96m========== REPAIR INGRESS ====== \e[0m"
 #count of successful uploads of repaired pieces
 put_repair_success=$($LOG 2>&1 | grep PUT_REPAIR | grep uploaded -c)
 #count of canceled uploads repaired pieces
