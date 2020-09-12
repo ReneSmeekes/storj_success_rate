@@ -2,9 +2,15 @@
 #A StorJ node monitor script: Contains code contributed by: BrightSilence, turbostorjdsk / KernelPanick, Alexey
 
 LOG_SOURCE="${1}"
+LOG_SINCE="${2}"
 
 if [ -e "${LOG_SOURCE}" ]
 then
+	if [ -n "${LOG_SINCE}" ]
+	then
+		echo "Log file source cannot be combined with docker logs '--since' parameter."
+		exit
+	fi
 	# the first argument is passed and it's an existing log file
 	LOG="cat ${LOG_SOURCE}"
 else
@@ -12,6 +18,10 @@ else
 	# bash successrate.sh mynodename
 	DOCKER_NODE_NAME="${1:-storagenode}"
 	LOG="docker logs $DOCKER_NODE_NAME"
+	if [ -n "${LOG_SINCE}" ]
+	then
+		LOG="docker logs $DOCKER_NODE_NAME --since ${LOG_SINCE}"
+	fi
 fi
 
 #Node Success Rates
