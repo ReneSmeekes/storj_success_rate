@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #A StorJ node monitor script: Contains code contributed by: BrightSilence, turbostorjdsk / KernelPanick, Alexey
 
-LOG_SOURCE="${1}"
+LOG_SOURCE="$*"
 
-if [ -e "${LOG_SOURCE}" ]
+if [ -e "${1}" ]
 then
 	# the first argument is passed and it's an existing log file
 	LOG="cat ${LOG_SOURCE}"
