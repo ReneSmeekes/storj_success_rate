@@ -203,7 +203,7 @@ echo -e "Success Rate:          $put_repair_ratio"
 
 echo -e "\e[96m========== DELETE ============= \e[0m"
 #count of successful deletes
-delete_success=$($LOG 2>&1 | grep deleted -c)
+delete_success=$($LOG 2>&1 | grep -E 'deleted|delete piece' -c)
 #count of failed deletes
 delete_failed=$($LOG 2>&1 | grep 'delete failed' -c)
 #Ratio of Fail delete
