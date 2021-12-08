@@ -15,7 +15,7 @@ then
 else
 	# assumes your docker container is named 'storagenode'. If not, pass it as the first argument, e.g.:
 	# bash successrate.sh mynodename
-	DOCKER_NODE_NAME="${1:-storagenode}"
+	DOCKER_NODE_NAME="${*:-storagenode}"
 	LOG="docker logs $DOCKER_NODE_NAME"
 fi
 
