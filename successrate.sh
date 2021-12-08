@@ -6,7 +6,12 @@ LOG_SOURCE="$*"
 if [ -e "${1}" ]
 then
 	# the first argument is passed and it's an existing log file
-	LOG="cat ${LOG_SOURCE}"
+	if [[ "${LOG_SOURCE}" == *.gz ]]
+        then
+          LOG="zcat ${LOG_SOURCE}"
+        else
+	  LOG="cat ${LOG_SOURCE}"
+        fi
 else
 	# assumes your docker container is named 'storagenode'. If not, pass it as the first argument, e.g.:
 	# bash successrate.sh mynodename
