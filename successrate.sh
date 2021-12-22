@@ -22,7 +22,6 @@ fi
 PRINTF=$(which printf)
 
 #Node Success Rates
-echo "LOG: ${LOG_SOURCE}"
 echo -e "\e[96m========== AUDIT ============== \e[0m"
 #count of successful audits
 audit_success=$($LOG 2>&1 | grep GET_AUDIT | grep downloaded -c)
