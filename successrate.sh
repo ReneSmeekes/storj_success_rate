@@ -121,7 +121,7 @@ else
 	put_cancel_ratio=0.000%
 fi
 #Ratio of Success
-if [ $(($put_success+$put_failed+$put_canceled+$put_failed)) -ge 1 ]
+if [ $(($put_success+$put_rejected+$put_canceled+$put_failed)) -ge 1 ]
 then
 	put_ratio=$($PRINTF '%.3f\n' $(echo -e "$put_success $put_failed $put_canceled" | awk '{print ( $1 / ( $1 + $2 + $3 )) * 100 }'))%
 else
